@@ -1,0 +1,44 @@
+[
+  {
+    "id": 1,
+    "thumbnail": "/card1.png",
+    "catagory": "Tech",
+    "date": "08 Nov 2022",
+    "tittle": "Take a peek at the technology used by Gojek Indonesia"
+  },
+  {
+    "id": 2,
+    "thumbnail": "/card2.png",
+    "catagory": "Jobs",
+    "date": "08 Nov 2022",
+    "tittle": "Practicing every day for the interview turn instead of being a chicken?"
+  },
+  {
+    "id": 3,
+    "thumbnail": "/card3.png",
+    "catagory": "Tech",
+    "date": "08 Nov 2022",
+    "tittle": "Take a peek at the technology used by Gojek Indonesia"
+  },
+  {
+    "id": 4,
+    "thumbnail": "/card1.png",
+    "catagory": "Tech",
+    "date": "08 Nov 2022",
+    "tittle": "Take a peek at the technology used by Gojek Indonesia"
+  },
+  {
+    "id": 5,
+    "thumbnail": "/card2.png",
+    "catagory": "Tech",
+    "date": "08 Nov 2022",
+    "tittle": "Take a peek at the technology used by Gojek Indonesia"
+  },
+  {
+    "id": 6,
+    "thumbnail": "/card3.png",
+    "catagory": "Tech",
+    "date": "08 Nov 2022",
+    "tittle": "Take a peek at the technology used by Gojek Indonesia"
+  }
+]

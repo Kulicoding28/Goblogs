@@ -1,0 +1,24 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  .font-outline-2 {
+    -webkit-text-stroke: 0.5px #046251;
+  }
+  .font-outline-4 {
+    -webkit-text-stroke: 1px #046251;
+  }
+}
+body {
+  @apply font-poppins;
+  background-image: url("/public/ornamen.png");
+  z-index: 5;
+}
+
+html {
+  background-color: #121212;
+  color: #858585;
+}
