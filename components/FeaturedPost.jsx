@@ -1,7 +1,7 @@
 import Thumbnail from "./Thumbnail";
 import Link from "next/link";
 
-export default function FeaturedPost() {
+export default function FeaturedPost(props) {
   return (
     <article>
       <h3 className="lg:mt-24 md:mt-16 lg:text-3xl md:text-xl mt-16 font-bold text-[#046251] align-top flex">
@@ -30,8 +30,8 @@ export default function FeaturedPost() {
             <a>
               <Thumbnail
                 image="image2.png"
-                catagory="Tech"
-                tittle="14 Nov 2022"
+                catagory={props.attributes.title}
+                tittle={props.attributes.createdAt}
                 judul="Mood traps and  how to overcome them"
               />
               <Thumbnail
