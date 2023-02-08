@@ -11,15 +11,23 @@ export default function FeaturedPost(props) {
         <div className="lg:w-8/12 md:w-7/12 w-full ">
           <Link href="/detail" legacyBehavior>
             <a>
-              <img src="/image1.png" className="rounded-md md:w-11/12 w-full" />
+              <img
+                src={
+                  process.env.APIURL +
+                  props.attributes.thumbnail.data.attributes.formats.small.url
+                }
+                className="rounded-md md:w-11/12 w-full"
+              />
               <div className="md:mt-1 flex flex-col mt-2">
-                <p className="font-light md:text-sm">UI/UX | 18 Nov 2022</p>
+                <p className="font-light md:text-sm">
+                  {props.attributes.category.data.attributes.name} |
+                  {props.attributes.createdAt}
+                </p>
                 <h1 className="font-bold lg:text-4xl md:text-2xl text-[#FFFFFF] text-2xl">
-                  Brutalism For Web Design
+                  {props.attributes.title}
                 </h1>
                 <p className="lg:w-1/2 md:text-md md:w-3/4 lg:mt-2 md:mt-1 leading-relaxed ">
-                  Brutalisme merupakan semacam gaya arsitektur pada era 70an
-                  yang mengekspos rangka-rangka konstruksi di bangunan besar..
+                  {props.attributes.headline}
                 </p>
               </div>
             </a>
@@ -30,7 +38,7 @@ export default function FeaturedPost(props) {
             <a>
               <Thumbnail
                 image="image2.png"
-                catagory={props.attributes.title}
+                catagory={props.attributes.category.data.attributes.name}
                 tittle={props.attributes.createdAt}
                 judul="Mood traps and  how to overcome them"
               />

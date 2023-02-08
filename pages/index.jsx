@@ -7,18 +7,15 @@ import mockPost from "../utils/post.json";
 
 export async function getServerSideProps() {
   const reqFeatured = await fetch(
-    process.env.APIURL + "/api/posts?filters[featured]=true"
+    process.env.APIURL +
+      "/api/posts?[filters][featured]=true&populate[thumbnail]=data&populate[category]=data"
   );
 
-  let featured = await reqFeatured.json();
-
-  if (featured.data.length < 1) {
-    featured = {};
-  }
+  const featured = await reqFeatured.json();
 
   return {
     props: {
-      featured: featured.data[0],
+      featured: featured.length < 1 ? false : featured.data[0],
     },
   };
 }
@@ -29,7 +26,7 @@ export default function Home({ featured }) {
     <>
       <Layout>
         <Container>
-          <FeaturedPost {...featured} />
+          {featured && <FeaturedPost {...featured} />}
           <div className="flex mt-12 bg-[#F5F5F5] -mx-4 flex-wrap pb-8 ">
             {post.map((post) => (
               <div key={post.id} className="md:w-4/12 w-full px-4 py-2">
