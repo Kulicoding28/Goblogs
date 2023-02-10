@@ -1,5 +1,6 @@
 import Thumbnail from "./Thumbnail";
 import Link from "next/link";
+import { formatDate } from "../utils/date";
 
 export default function FeaturedPost(props) {
   return (
@@ -9,19 +10,20 @@ export default function FeaturedPost(props) {
       </h3>
       <div className="flex mt-10 -mx-4 items-start flex-wrap">
         <div className="lg:w-8/12 md:w-7/12 w-full ">
-          <Link href="/detail" legacyBehavior>
+          <Link href={props.attributes.slug} legacyBehavior>
             <a>
               <img
                 src={
-                  process.env.APIURL +
+                  process.env.NEXT_PUBLIC_URL +
                   props.attributes.thumbnail.data.attributes.formats.small.url
                 }
                 className="rounded-md md:w-11/12 w-full"
               />
               <div className="md:mt-1 flex flex-col mt-2">
                 <p className="font-light md:text-sm">
-                  {props.attributes.category.data.attributes.name} |
-                  {props.attributes.createdAt}
+                  {props.attributes.category.data.attributes.name}
+                  <span className=" p-1">|</span>
+                  {formatDate(props.attributes.createdAt)}
                 </p>
                 <h1 className="font-bold lg:text-4xl md:text-2xl text-[#FFFFFF] text-2xl">
                   {props.attributes.title}

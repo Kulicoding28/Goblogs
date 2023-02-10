@@ -1,3 +1,4 @@
+import { data } from "autoprefixer";
 import { useState } from "react";
 import Card from "../components/Card";
 import Container from "../components/Container";
@@ -10,25 +11,29 @@ export async function getServerSideProps() {
     process.env.APIURL +
       "/api/posts?[filters][featured]=true&populate[thumbnail]=data&populate[category]=data"
   );
-
   const featured = await reqFeatured.json();
+
+  const reqPosts = await fetch(
+    process.env.APIURL + "/api/posts?[filters][featured][$ne]=true&populate=*"
+  );
+  const posts = await reqPosts.json();
 
   return {
     props: {
-      featured: featured.length < 1 ? false : featured.data[0],
+      featured: featured.data.length < 1 ? false : featured.data[0],
+      posts: posts.data,
     },
   };
 }
-export default function Home({ featured }) {
-  console.log({ featured });
-  const [post, setPost] = useState(mockPost);
+export default function Home({ featured, posts: initialPosts }) {
+  const [posts, setPost] = useState(initialPosts);
   return (
     <>
       <Layout>
         <Container>
           {featured && <FeaturedPost {...featured} />}
           <div className="flex mt-12 bg-[#F5F5F5] -mx-4 flex-wrap pb-8 ">
-            {post.map((post) => (
+            {posts.map((post) => (
               <div key={post.id} className="md:w-4/12 w-full px-4 py-2">
                 <Card {...post} />
               </div>

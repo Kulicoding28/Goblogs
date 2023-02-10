@@ -24,5 +24,6 @@ module.exports = {
       };
       addUtilities(utilities);
     }),
+    require("@tailwindcss/typography"),
   ],
 };
