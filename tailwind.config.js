@@ -8,8 +8,23 @@ module.exports = {
   ],
   theme: {
     extend: {
+      container: {
+        screens: {
+          sm: "640px",
+          md: "768px",
+          lg: "1024px",
+          xl: "1080px",
+        },
+      },
       fontFamily: {
         poppins: ["Poppins", "sans-serif"],
+      },
+      typography: {
+        DEFAULT: {
+          css: {
+            maxWidth: "100%",
+          },
+        },
       },
     },
   },

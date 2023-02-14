@@ -10,7 +10,7 @@ export default function FeaturedPost(props) {
       </h3>
       <div className="flex mt-10 -mx-4 items-start flex-wrap">
         <div className="lg:w-8/12 md:w-7/12 w-full ">
-          <Link href={props.attributes.slug} legacyBehavior>
+          <Link href={`/${props.attributes.slug}`} legacyBehavior>
             <a>
               <img
                 src={

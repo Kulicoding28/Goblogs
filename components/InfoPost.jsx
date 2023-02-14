@@ -12,7 +12,7 @@ export default function InfoPost({ category, date, title, slug }) {
             </Link>
           </p>
           <p className="font-light lg:text-sm md:text-xs  px-1 text-[#181818]">
-            <Link href={slug} legacyBehavior>
+            <Link href={`/${slug}`} legacyBehavior>
               <a>{formatDate(date)}</a>
             </Link>
           </p>

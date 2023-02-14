@@ -3,14 +3,13 @@ import Container from "./Container";
 import Icon from "./Icon";
 import Link from "next/link";
 
-export default function Navbar() {
+export default function Navbar({ categories }) {
   const [dropdown, setDropdown] = useState(false);
   const [offcanvas, setOffCanvas] = useState(false);
-  const dropdownList = [
-    { text: "Internet", href: "/post" },
-    { text: "Jobs", href: "/post" },
-    { text: "Books", href: "/post" },
-  ];
+  const items = categories.data.map((category) => ({
+    name: category.attributes.name,
+    href: `/category/${category.attributes.slug}`,
+  }));
   return (
     <div>
       <nav>
@@ -72,77 +71,15 @@ export default function Navbar() {
                 </svg>
               </button>
               <ul className="lg:space-x-6 flex lg:items-center lg:px-16 md:px-6 md:text-sm lg:text-lg flex-col lg:flex-row space-y-4 lg:space-y-0 ">
-                <li>
-                  <Link href="/" legacyBehavior>
-                    <a className="hover:border-b-2 hover:border-b-[#046251]  transition-duration-500 ease-in-out active:text-[#DBD9DA]">
-                      Home
-                    </a>
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/post" legacyBehavior>
-                    <a className="hover:border-b-2 hover:border-b-[#046251] hover:transition-duration-500 active:text-[#DBD9DA]">
-                      Tech
-                    </a>
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/post" legacyBehavior>
-                    <a className="hover:border-b-2 hover:border-b-[#046251] hover:transition-duration-500 active:text-[#DBD9DA]">
-                      Design
-                    </a>
-                  </Link>
-                </li>
-                <li className="relative">
-                  <a
-                    className="hover:border-b-2 hover:border-b-[#046251] cursor-pointer flex items-center active:text-[#DBD9DA]"
-                    onClick={() => setDropdown(!dropdown)}
-                  >
-                    More
-                    <svg
-                      className="ml-1"
-                      width="8"
-                      height="6"
-                      viewBox="0 0 8 6"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <line
-                        y1="-1"
-                        x2="4.99731"
-                        y2="0.00787747"
-                        transform="matrix(0.682796 0.730609 0.682796 -0.730609 2 0.736359)"
-                        stroke="#858585"
-                        strokeWidth="2"
-                      />
-                      <line
-                        x1="4.15837"
-                        y1="4.29289"
-                        x2="7.15837"
-                        y2="1.29289"
-                        stroke="#858585"
-                        strokeWidth="2"
-                      />
-                    </svg>
-                  </a>
-                  {dropdown && (
-                    <ul className="absolute w-[200px] mt-1 bg-[#F5F5F5] rounded shadow-md shadow-[#046251] lg:-mx-56">
-                      {dropdownList.map(({ text, href }) => (
-                        <li
-                          key={text}
-                          className="border-b border-slate-700 last:border-b-0"
-                        >
-                          <a
-                            href={href}
-                            className="flex py-2 px-4  text-slate-900 hover:bg-[#046251] hover:text-[#F5F5F5]"
-                          >
-                            {text}
-                          </a>
-                        </li>
-                      ))}
-                    </ul>
-                  )}
-                </li>
+                {items.map((item) => (
+                  <li key={item.name}>
+                    <Link href={item.href} legacyBehavior>
+                      <a className="hover:border-b-2 hover:border-b-[#046251]  transition-duration-500 ease-in-out active:text-[#DBD9DA]">
+                        {item.name}
+                      </a>
+                    </Link>
+                  </li>
+                ))}
               </ul>
             </div>
           </div>
