@@ -7,7 +7,7 @@ export default function InfoPost({ category, date, title, slug }) {
       <div className="mt-2  flex flex-col lg:mx-14 md:mx-5 ">
         <div className="flex p-0">
           <p className="font-light lg:text-sm md:text-xs px-1 border-r-[1px] border-[#181818] text-[#181818] ">
-            <Link href={slug} legacyBehavior>
+            <Link href={`/${slug}`} legacyBehavior>
               <a>{category}</a>
             </Link>
           </p>

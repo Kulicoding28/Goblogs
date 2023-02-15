@@ -2,14 +2,26 @@ import React, { useState } from "react";
 import Container from "./Container";
 import Icon from "./Icon";
 import Link from "next/link";
+import Router from "next/router";
 
 export default function Navbar({ categories }) {
-  const [dropdown, setDropdown] = useState(false);
+  const [keyword, setKeyword] = useState(false);
   const [offcanvas, setOffCanvas] = useState(false);
   const items = categories.data.map((category) => ({
     name: category.attributes.name,
     href: `/category/${category.attributes.slug}`,
   }));
+
+  function doSearch(e) {
+    e.preventDefault();
+
+    Router.push({
+      pathname: "/search",
+      query: {
+        q: keyword,
+      },
+    });
+  }
   return (
     <div>
       <nav>
@@ -38,10 +50,13 @@ export default function Navbar({ categories }) {
               </Link>
             </div>
             <div className=" md:w-5/12 lg:px-6 md:px-12 lg:ml-24  w-5/12 md:mx-end ml-auto">
-              <input
-                className="bg-[#121212] py-1 md:px-9 px-9 w-full rounded-full border-[1px] border-[#046251] focus:border-none focus:ring-1 focus:ring-slate-700 bg-search font-light text-sm"
-                placeholder="search"
-              ></input>
+              <form onSubmit={doSearch}>
+                <input
+                  className="bg-[#121212] py-1 md:px-9 px-9 w-full rounded-full border-[1px] border-[#046251] focus:border-none focus:ring-1 focus:ring-slate-700 bg-search font-light text-sm"
+                  placeholder="search"
+                  onChange={(e) => setKeyword(e.target.value)}
+                ></input>
+              </form>
             </div>
             <div
               className={`lg:w-5/12 bg-[#121212] w-full fixed top-0 left-0 h-full lg:h-auto lg:p-0 p-10 transition-all lg:static ${
