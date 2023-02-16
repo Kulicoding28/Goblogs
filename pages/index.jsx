@@ -34,14 +34,20 @@ export default function Home({ featured, posts, hots }) {
   return (
     <>
       <Container>
-        <div className="flex mt-10 -mx-4 items-start flex-wrap align-middle">
-          <div className="flex lg:w-8/12 md:w-7/12 w-full ">
-            {featured && <FeaturedPost {...featured} />}
+        <articel>
+          <h3 className="lg:mt-24 md:mt-16 lg:text-3xl md:text-xl mt-16 font-bold text-[#046251] align-top flex">
+            Poppular<span className="mx-1 text-5xl">News.</span>
+          </h3>
+
+          <div className="flex mt-10 -mx-4 items-start flex-wrap align-middle">
+            <div className="flex lg:w-8/12 md:w-7/12 w-full ">
+              {featured && <FeaturedPost {...featured} />}
+            </div>
+            <div className="flex lg:w-4/12 md:w-5/12 w-full md:mt-0 mt-2 ">
+              <HotList hots={hots} />
+            </div>
           </div>
-          <div className="flex lg:w-4/12 md:w-5/12 w-full md:mt-0 mt-2 ">
-            <HotList hots={hots} />
-          </div>
-        </div>
+        </articel>
         <PostsList posts={posts} />
       </Container>
     </>
