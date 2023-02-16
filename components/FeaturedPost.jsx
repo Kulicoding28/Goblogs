@@ -1,15 +1,27 @@
 import Thumbnail from "./Thumbnail";
 import Link from "next/link";
 import { formatDate } from "../utils/date";
+import HotList from "./HotList";
+
+// export async function getServerSideProps() {
+//   const reqHots = await fetch(
+//     process.env.APIURL +
+//       "/api/posts?[filters][hot]=true&populate[thumbnail]=data&populate[category]=data"
+//   );
+//   const hots = await reqHots.json();
+
+//   return {
+//     props: {
+//       hots: hots.data.length < 1 ? false : hots.data,
+//     },
+//   };
+// }
 
 export default function FeaturedPost(props) {
   return (
     <article>
-      <h3 className="lg:mt-24 md:mt-16 lg:text-3xl md:text-xl mt-16 font-bold text-[#046251] align-top flex">
-        Poppular<span className="mx-1 text-5xl">News.</span>
-      </h3>
-      <div className="flex mt-10 -mx-4 items-start flex-wrap">
-        <div className="lg:w-8/12 md:w-7/12 w-full ">
+      <div>
+        <div>
           <Link href={`/${props.attributes.slug}`} legacyBehavior>
             <a>
               <img
@@ -35,24 +47,13 @@ export default function FeaturedPost(props) {
             </a>
           </Link>
         </div>
-        <div className="lg:w-4/12 md:w-5/12 w-full md:mt-0 mt-2 ">
+        {/* <div className="lg:w-4/12 md:w-5/12 w-full md:mt-0 mt-2 ">
           <Link href="/detail" legacyBehavior>
             <a>
-              <Thumbnail
-                image="image2.png"
-                catagory={props.attributes.category.data.attributes.name}
-                tittle={props.attributes.createdAt}
-                judul="Mood traps and  how to overcome them"
-              />
-              <Thumbnail
-                image="image3.png"
-                catagory="Jobs"
-                tittle="09 Nov 2022"
-                judul="Say NO if there is no contract for your project!"
-              />
+              <HotList hots={hots} />
             </a>
           </Link>
-        </div>
+        </div> */}
       </div>
     </article>
   );
